@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour {
     public float speed = 25;
     public float jumpPower = 125;
 
+    bool grounded = false;
     Vector3 movement = new Vector3(0, 0, 0);
     Vector3 minVelocity = new Vector3(-1, 0, 0);
     Vector3 maxVelocity = new Vector3(1, 0, 0);
@@ -18,7 +19,7 @@ public class PlayerMovement : MonoBehaviour {
     void Update() {
         movement.x = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetButtonDown("Jump")) {
+        if (Input.GetButtonDown("Jump") && grounded) {
             rb.AddForce(Vector3.up * jumpPower);
         }
     }
@@ -38,5 +39,13 @@ public class PlayerMovement : MonoBehaviour {
             minVelocity.y = rb.velocity.y;
             rb.velocity = minVelocity;
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D c) {
+        grounded = true;
+    }
+
+    void OnTriggerExit2D(Collider2D c) {
+        grounded = false;
     }
 }
