@@ -1,0 +1,29 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemyMovement : MonoBehaviour {
+    public float speed = 20;
+    public Vector2 direction = new Vector2();
+
+    Vector3 minVelocity = new Vector3(-1, 0, 0);
+    Vector3 maxVelocity = new Vector3(1, 0, 0);
+    Rigidbody2D rb;
+
+    void Start() {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void FixedUpdate() {
+        rb.AddForce(direction * speed);
+
+        // Limit velocity using minVelocty/maxVelocity
+        if (rb.velocity.x > maxVelocity.x) {
+            maxVelocity.y = rb.velocity.y;
+            rb.velocity = maxVelocity;
+        } else if (rb.velocity.x <  minVelocity.x) {
+            minVelocity.y = rb.velocity.y;
+            rb.velocity = minVelocity;
+        }
+    }
+}
