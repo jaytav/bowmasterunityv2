@@ -41,11 +41,11 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    void OnTriggerEnter2D(Collider2D c) {
+    void OnTriggerEnter2D(Collider2D collider) {
         grounded = true;
     }
 
-    void OnTriggerExit2D(Collider2D c) {
+    void OnTriggerExit2D(Collider2D collider) {
         grounded = false;
     }
 }

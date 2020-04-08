@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6529790391823985328}
   - component: {fileID: 6529790391823985332}
   - component: {fileID: 4017179081676158111}
+  - component: {fileID: 7087286589753837107}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -173,7 +174,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 25
   jumpPower: 150
-  grounded: 0
 --- !u!114 &4017179081676158111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,3 +187,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrow: {fileID: 4885388331081150077, guid: 6306abba5f4747a4496d7dc001d966eb, type: 3}
+--- !u!114 &7087286589753837107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6529790391823985343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 662d4327ba842404084dc2e7ba50d2de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  currentHealth: 3

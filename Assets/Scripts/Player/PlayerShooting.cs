@@ -2,7 +2,6 @@
 
 public class PlayerShooting : MonoBehaviour {
     public GameObject arrow;
-
     Vector2 mousePosInWorld = new Vector2();
 
     void Update() {        

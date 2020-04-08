@@ -9,9 +9,11 @@ public class EnemyMovement : MonoBehaviour {
     Vector3 minVelocity = new Vector3(-1, 0, 0);
     Vector3 maxVelocity = new Vector3(1, 0, 0);
     Rigidbody2D rb;
+    Damage dmg;
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
+        dmg = GetComponent<Damage>();
     }
 
     void FixedUpdate() {
@@ -24,6 +26,13 @@ public class EnemyMovement : MonoBehaviour {
         } else if (rb.velocity.x <  minVelocity.x) {
             minVelocity.y = rb.velocity.y;
             rb.velocity = minVelocity;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision) {
+        Health health = collision.gameObject.GetComponent<Health>();
+        if (health != null) {
+            health.TakeDamage(dmg.DoDamage());
         }
     }
 }
