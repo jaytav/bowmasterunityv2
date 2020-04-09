@@ -1,8 +1,17 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
+
+[System.Serializable]
+public class UpdateHealthEvent : UnityEvent<int, int> {}
 
 public class Health : MonoBehaviour {
     public int maxHealth = 3;
     public int currentHealth = 3;
+    public UpdateHealthEvent updateHealthEvent;
+
+    void Start() {
+        updateHealthEvent.Invoke(maxHealth, currentHealth);
+    }
 
     // GameObjects with Health get destroyed when <= 0
     public void TakeDamage(int damage) {
@@ -11,5 +20,7 @@ public class Health : MonoBehaviour {
         if (currentHealth <= 0) {
             Destroy(gameObject);
         }
+
+        updateHealthEvent.Invoke(maxHealth, currentHealth);
     }
 }
