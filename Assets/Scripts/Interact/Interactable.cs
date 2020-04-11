@@ -16,7 +16,7 @@ public class Interactable : MonoBehaviour {
     }
 
     // Destroy Interactable held GameObject 
-    public void GetInteractedWith() {
+    public virtual void GetInteractedWith(Interactor interactor) {
         Destroy(transform.parent.gameObject);
     }
 }

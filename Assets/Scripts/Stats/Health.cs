@@ -23,4 +23,16 @@ public class Health : MonoBehaviour {
 
         updateHealthEvent.Invoke(maxHealth, currentHealth);
     }
+
+    public void Heal(int healAmount) {
+        currentHealth += healAmount;
+
+        // prevents overheal
+        if (currentHealth > maxHealth) {
+            currentHealth = maxHealth;
+            return;
+        }
+
+        updateHealthEvent.Invoke(maxHealth, currentHealth);
+    }
 }
