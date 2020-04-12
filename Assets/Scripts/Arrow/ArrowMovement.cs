@@ -31,7 +31,7 @@ public class ArrowMovement : MonoBehaviour {
         Health health = collider.gameObject.GetComponent<Health>();
         if (health != null) {
             health.TakeDamage(dmg.DoDamage());
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }
