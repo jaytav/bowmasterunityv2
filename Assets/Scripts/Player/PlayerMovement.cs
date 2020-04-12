@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
     public float speed = 25;
     public float jumpPower = 125;
+    [HideInInspector]
+    public bool grounded = false;
 
-    bool grounded = false;
     Vector3 movement = new Vector3(0, 0, 0);
     Vector3 minVelocity = new Vector3(-1, 0, 0);
     Vector3 maxVelocity = new Vector3(1, 0, 0);
@@ -39,17 +40,5 @@ public class PlayerMovement : MonoBehaviour {
             minVelocity.y = rb.velocity.y;
             rb.velocity = minVelocity;
         }
-    }
-
-    void OnTriggerEnter2D(Collider2D collider) {
-        grounded = true;
-    }
-
-    void OnTriggerStay2D(Collider2D collider) {
-        grounded = true;
-    }
-
-    void OnTriggerExit2D(Collider2D collider) {
-        grounded = false;
     }
 }
