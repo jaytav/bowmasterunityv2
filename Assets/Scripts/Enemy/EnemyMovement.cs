@@ -6,6 +6,7 @@ public class EnemyMovement : MonoBehaviour {
     public float speed = 20;
     public Vector2 direction = new Vector2();
 
+    bool stopMoving = false;
     Vector3 minVelocity = new Vector3(-1, 0, 0);
     Vector3 maxVelocity = new Vector3(1, 0, 0);
     Rigidbody2D rb;
@@ -17,6 +18,10 @@ public class EnemyMovement : MonoBehaviour {
     }
 
     void FixedUpdate() {
+        if (stopMoving) {
+            return;
+        }
+
         rb.AddForce(direction * speed);
 
         // Limit velocity using minVelocty/maxVelocity
@@ -34,5 +39,13 @@ public class EnemyMovement : MonoBehaviour {
         if (health != null) {
             health.TakeDamage(dmg.DoDamage());
         }
+    }
+
+    public void ActionInRange() {
+        stopMoving = true;
+    }
+
+    public void ActionOutOfRange() {
+        stopMoving = false;
     }
 }
